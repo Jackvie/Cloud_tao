@@ -10,3 +10,4 @@ def test():
 a = timeit.Timer('test()', 'from __main__ import test')
 b = a.timeit(10000)
 print(b)
+
