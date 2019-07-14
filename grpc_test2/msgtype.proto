@@ -1,0 +1,50 @@
+syntax = "proto3";
+/*
+UserRequest:
+    user_id       # 用户id
+    channel_id    # 频道id
+    article_num   # 推荐的文章数量
+    time_stamp    # 推荐的时间戳
+
+ArticleResponse:
+    expousre         # 曝光埋点数据
+    time_stamp       # 推荐的时间戳
+    recommends:      # 推荐结果
+        article_id   # 文章id
+        track:         # 关于文章的埋点数据
+            click    # 用户点击行为的埋点参数
+            collect  # 用户收藏的埋点参数
+            share    # 用户分享的埋点参数
+            read     # 用户进入文章详情的埋点参数
+*/
+
+message UserRequest{
+    string user_id = 1;
+    string channel_id = 2;
+    string article_num = 3;
+    string time_stamp = 4;
+}
+
+message Tracks {
+    string click = 1;
+    string collect = 2;
+    string share = 3;
+    string read = 4;
+}
+
+message Recommand {
+    string article_id = 1;
+    Tracks track = 2;
+}
+
+message ArticleResponse{
+    string expousre = 1;
+    string time_stamp = 2;
+    repeated Recommand recommends = 3;
+}
+
+service  TheServerClass {
+    rpc FirstFn (UserRequest) returns (ArticleResponse) {};
+    rpc SecondFn (UserRequest) returns (ArticleResponse) {};
+}
+

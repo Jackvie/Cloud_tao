@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Request {
+    string a = 1;
+    int32 b = 2;
+    int32 c = 3;
+}
+
+message Result {
+    string x = 1;
+    string y = 2;
+    repeated string z = 3;
+}
+
+message Response {
+  repeated Result q = 1;
+}
+
+service HelloService {
+  rpc SayHello (Request) returns (Response) {}
+}
