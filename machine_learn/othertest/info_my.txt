@@ -1,0 +1,126 @@
+测试环境使用方法：
+ssh newssh@122.5.32.82 -p822
+251a%YBI;RW
+
+ssh yf@192.168.1.241      
+hRKtXs41Ea0VacE  yuntao jumpter
+
+liuyabo 123
+代理: sudo ssh -i aaa.pem ec2-user@54.145.152.37
+速卖通抓单服务器   root@39.100.245.194      Tianhu2018
+nohup python3 manage.py runserver 0.0.0.0:30002 >> nohup.out &
+
+Jackvie pass,.,.0101me github
+https://www.cnblogs.com/daliangtou/p/5147730.html rabbitmq
+1 进入  OMS   目录，git branch 看目前是在是在哪个分支上
+
+2 如果要测试线上代码，   git checkout master  切换到线上分支
+
+3 如果要测试自己分支代码， git checkout 自己分支  切换到自己的分支，每个人的分支我都已经创建了
+
+4 cd ..  刚进入的目录（家目录）   执行  sh restart.sh    （注意因为上面已经切换分支了，所以这里不需要再进入 restart.sh 里面修改  git pull 了）
+
+5 执行完 sh restart.sh  之后，  sudo docker exec -it 2b97b06e345c bash   进入 docker 环境，  进入到  oms_test 目录
+
+6 看 ps -ef | grep 9991   是否有 9991 端口在执行，没有的话可以运行   nohup python manage.py runserver 0.0.0.0:9991 >> nohup.out &zzz  起来就好， 运行日志都写到  nohup.out  该文件中
+
+7 测试网址   http://122.5.32.82:9991/order/
+
+
+注意点： 如果要使用测试环境 在网关小组群里面说一声，以免两个人别使用冲突了
+
+### git操作
+cd OMS
+git checkout master
+cd ..
+sh restart.sh
+cd OMS
+git push --delete origin shizhe
+git checkout -b shizhe
+git config --global push.default simple
+git push --set-upstream origin shizhe
+git push -u origin yuntao
+
+### 我的服务器
+登录阿里云
+davidtaorminate	pass,.,.me
+远程连接阿里云	255910
+
+ssh root@120.79.99.150 
+root	hRKtXs41Ea0VacE
+
+https://ecs.console.aliyun.com/?spm=5176.12818093.aliyun_sidebar.daliyun_sidebar_ecs.488716d0eVHfHf&accounttraceid=e23a69ecca8e4549a549c86845e33d6cufsr#/server/i-wz9agiqhn4s2dofx1m0c/detail?regionId=cn-shenzhen
+
+useradd -m yuntao
+passwd yuntao
+pass,.,.me
+su - yuntao
+
+ssh yuntao@120.79.99.150
+su - yuntao
+vi /etc/sudoers +20
+
+### 204日志下载
+/home/oms_online/oms_online/log/crontab_log/crontab_mercadolibre.log
+
+### 237日志
+http://kibana.starmerx.com/app/kibana#/discover?_g=()&_a=(columns:!(log.file.path),index:'8d542570-de9b-11e9-bef2-373457f2959c',interval:auto,query:(language:kuery,query:'/home/oms_online/oms_online/log/crontab_log/crontab_mercadolibre.log'),sort:!('@timestamp',desc))
+
+
+### wowmaAPI
+yabo@starmerx.com  liuyabo666
+
+### 腾讯邮箱
+yuntao@starmerx.com	hRKtXs41Ea0VacE
+
+### UKI
+15938721922 123456
+
+### google
+https://blog.csdn.net/jasonzhoujx/article/details/80504308
+
+### www.tapd.cn
+yuntao@startmerx.com	Tianhu1996
+
+### Git
+yuntao	yuntao
+
+### 钉钉 https://im.dingtalk.com/
+
+### pip升级 报错修正
+pip3 install pip --upgrade
+sudo vi /usr/bin/pip3
+
+#from pip import main
+from pip import __main__
+if __name__ == '__main__':
+    #sys.exit(main())
+    sys.exit(__main__._main())
+
+### 204日志
+/code/oms_shell/log/cr...
+/code/oms_online/cr....
+
+### 207日志
+...
+
+
+本地测试库：mysql -u starpro -p'x' -h 122.5.32.82 -P 8008 本地 测试库name选max_starpro
+新本地测试数据库  mysql -u starpro -p'1' -h 122.5.32.82 -P 33306     新的选starpro
+max_starpro     赵世成    x  账户
+starpro		曹超超   cao123456
+http://elm.starmerx.com/sysproduct/product/?sku=ST21225Q1VM1
+
+Jacktower15938721922@gmail.com pass,.,.me Google
+Jacktower15938721922 15938721922@163.com pass,.,.me Tumblr
+Jacktower 15938721922@163.com pass,.,.me Twiter 
+魏云涛 yuntao088
+
+172.18.50.188  1080 https profiex
+
+
+新的本地测试环境，（测试库还是连的烟台） http://172.18.40.34:8000/order/     登录服务器  ssh root@172.18.40.34  123456
+
+git reflog
+git reset --soft HEAD^
+19d54e1
