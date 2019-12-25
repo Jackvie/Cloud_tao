@@ -1,0 +1,7 @@
+# mkvirtuaenv -p /usr/bin/python3 ml3
+numpy
+pandas
+jieba
+ipython
+scipy
+Scikit-learn
