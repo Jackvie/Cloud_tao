@@ -20,4 +20,18 @@ print('-+'*50)
 print(r2[[0,2]])
 print(r2[['age','name']])
 
+print('-+'*50)
+
+### 布尔索引
+s3 = pd.Series(range(10))
+print(s3[s3<=s3.mean()])
+print(s3[s3.isin((1,2,3))])
+
+### 字符串bool索引
+print(r1.str.strip()=='a')
+### 转为数组
+print(r1.str.split().tolist())
+print(r1.str.split('x',1).tolist())
+
+
 
