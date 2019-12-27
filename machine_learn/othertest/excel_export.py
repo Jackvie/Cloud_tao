@@ -44,4 +44,33 @@ def make_excel(key,value,get_file_name):
 #$scope.export = function () {
 #	var url = 'export_summary?' + 'report_id=' + $scope.report_id;
 #	window.open(url)
+
+
+@login_required
+def sql_export(request):
+
+    try:
+        if not g_raw:
+            return
+        raw = g_raw.get(request.user.id)
+
+        # 把数据写入execel
+        wk = xlwt.Workbook(encoding='utf-8')
+        sheet = wk.add_sheet('sheet1')
+        for i, v in enumerate(raw):
+            for col, val in enumerate(v):
+                sheet.write(i, col, val)
+
+
+        from StringIO import StringIO
+        sio = StringIO()
+        wk.save(sio)
+        res = HttpResponse()
+        res["Content-Type"] = "application/octet-stream"
+        res["Content-Disposition"] = 'filename="' + '数据.xls"'
+        res.write(sio.getvalue())
+        return res
+    except Exception as e:
+        print e
+        return JsonResponse({'status': 'failed', 'error_msg': str(e)})
 #}

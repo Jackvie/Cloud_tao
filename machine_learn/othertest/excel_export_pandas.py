@@ -17,6 +17,7 @@ df = df.rename(columns={　　　　#修改数据库中列的名称
 response = HttpResponse(content_type='application/vnd.ms-excel')
 execl_name = 'test'
 response['Content-Disposition'] = 'attachment;filename={0}.xlsx'.format(execl_name)
-by = df.to_excel(outfile,index=False)     #形成流式导出
-response.write(by.getvalue())
+df.to_excel(outfile,index=False)     #形成流式导出
+#response.write(by.getvalue())
+response.write(outfile.getvalue())
 return response
