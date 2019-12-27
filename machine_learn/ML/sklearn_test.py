@@ -53,22 +53,27 @@ def tF_IDF():
     # print(n)
     r = res.toarray()
     # print(r)
-    p = pd.DataFrame(r, columns=n).T
+    #p = pd.DataFrame(r, columns=n).T
     # print(p.info())
     # print(p.describe())
     # s = p.max(axis=1)
     # print(p[p[0]==p[0].max()])
     # print(p[p[1]==p[1].max()])
     # print(p[p[2]==p[2].max()])
-    print(p[0].sort_values(ascending=False).head())
-    print(p.sort_values(by=0, ascending=False)[0].head())
-    print(p.sort_values(by=1, ascending=False)[1].head())
-    print(p.sort_values(by=2, ascending=False)[2].head())
-    print(p[[0,1]].sort_values(by=0).tail())
+    #print(p[0].sort_values(ascending=False).head())
+    #print(p.sort_values(by=0, ascending=False)[0].head())
+    #print(p.sort_values(by=1, ascending=False)[1].head())
+    #print(p.sort_values(by=2, ascending=False)[2].head())
+    #print(p[[0,1]].sort_values(by=0).tail())
     # print(p[0:2].sort_values(by=0).head())
-    print(p[0:2].head())
+    #print(p[0:2].head())
 
     # print(p.loc[[s.to_frame()]])
+    ################################################
+    p = pd.DataFrame(r, columns=n).T
+    ####################全局的布尔索引################
+    pp = p[p.isin(p.max().tolist())]
+    print(pp.dropna(axis=0, how='all'))
 
 
 def main():
