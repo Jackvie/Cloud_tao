@@ -33,5 +33,10 @@ print(r1.str.strip()=='a')
 print(r1.str.split().tolist())
 print(r1.str.split('x',1).tolist())
 
-
+### Series使用tolist转列表
+s4 = pd.Series(['a/b','c/d/e','f/d'])
+#print(s4.str.split('/'))
+print(s4.str.split('/').tolist())
+print(s4.tolist())
+print(list(s4))
 
