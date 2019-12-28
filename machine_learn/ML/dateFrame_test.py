@@ -38,6 +38,10 @@ print(type(df2.loc[[1,2],['a','bn']]))
 print(type(df2.loc[1:,['a']]))
 print(type(df2.loc[[1,2],'a':]))
 print(type(df2.loc[[1],:]))
+### 返回的Series依然可以.loc
+print(type(df2.loc[1,:]))
+print(type(df2.loc[1]))
+print(df2.loc[1].loc['a'])
 # 连续 DataFrame
 print(type(df2.loc[:,:]))
 # 指定行的连续列 Series
