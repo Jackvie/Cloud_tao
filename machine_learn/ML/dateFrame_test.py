@@ -9,10 +9,15 @@ print(df1)
 print(df2)
 #df1.to_excel()
 
+########简单操作##########
 ### 取行 Dataframe
 print(type(df2[:])) 
+print(type(df2[1:2]))
 ### 取列 Series
 print(type(df2['a']))
+### 取列 DataFrame
+print(type(df2[['a']]))
+print(type(df2[['a','bn']]))
 
 
 ### 先取行再取列 Series
@@ -32,6 +37,7 @@ print(type(df2.loc[[1,2],['a','bn']]))
 # 连续与间隔 DataFrame
 print(type(df2.loc[1:,['a']]))
 print(type(df2.loc[[1,2],'a':]))
+print(type(df2.loc[[1],:]))
 # 连续 DataFrame
 print(type(df2.loc[:,:]))
 # 指定行的连续列 Series
@@ -40,3 +46,5 @@ print(type(df2.loc[:,'a']))
 
 ### iloc位置获取行数据(即索引行和索引列的位置)
 pass
+
+
