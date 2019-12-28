@@ -49,6 +49,3 @@ print(type(df2.loc[1,:]))
 print(type(df2.loc[:,'a']))
 
 ### iloc位置获取行数据(即索引行和索引列的位置)
-pass
-
-
