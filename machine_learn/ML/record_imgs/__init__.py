@@ -30,4 +30,6 @@ def main():
 
     p1.start()
     p2.start()
-main()
+if __name__ == '__main__':
+
+    #main()
