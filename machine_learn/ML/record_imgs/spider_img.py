@@ -27,8 +27,8 @@ def write(q):
 
 def download(q):
     i = 1
+    url = 'https://www.bidongmh.com/chapter/20651'
     while True:
-        url = 'https://www.bidongmh.com/chapter/20651'
         response = requests.get(url,headers=headers, timeout=10, verify=False)
         result = response.content
         soup = BeautifulSoup(result, 'xml')
