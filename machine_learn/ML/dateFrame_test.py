@@ -51,6 +51,16 @@ def fn1():
 
     ### iloc位置获取行数据(即索引行和索引列的位置)
 
+    ### 列名不换换列
+    # df.loc[:, ['a', 'b']] = np.array(df[['b', 'a']]).tolist()
+    ### 取出所有列重新排列位置
+    # df = df.loc[:, ['类型','星任务', '描述','提报人','解决人']]
+
+# fn3_apply()
+# df.transform() 类型转换
+# df.transpose() 转置
+# df.append([[1,2,3,4,5]]) 加一行
+# df['xx'] = [1,2,3,4,5] 加一列
 def fn3_apply():
 
     ### Series  df.apply() axis=0时 Series会将每一个值传给func处理
@@ -72,7 +82,33 @@ def fn3_apply():
         return ar.apply(fn4)
     print(df.apply(fn1))
 
+    ### DataFrame eachElementOperation
+    def fn5(p):
+        if isinstance(p,int):
+            return p**2
+        return p
+    print(df.applymap(fn5))
 
-# df.append()
-# df.applymap()
+
+
 # df.replace()
+#fnn_replace()
+def fnn_replace():
+    ### DataFrame
+    import pandas as pd
+    import numpy as np
+    df = pd.DataFrame(np.arange(24).reshape((4,6)))
+    for i in df.columns:
+        df[i] = 'a'+str(i)
+    df = df.append([list('x'*len(df.columns))])
+    df = df.astype({i:'object' for i in df.columns})
+    print(df)
+    print(df.replace({'a1':0,'a2':0}))
+    print(df.replace('a1',100))
+    print(df.replace('a[012]', 33, regex=True))
+    print(df.replace({'a[01]':11, 'a[23]':22}, regex=True))
+
+    ### Series
+    se = pd.Series(['a'+str(i) for i in range(20)])
+    print(se.str.replace('a[0-5]$', 'xxx'))
+
