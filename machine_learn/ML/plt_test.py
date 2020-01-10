@@ -1,8 +1,6 @@
 def plt_01():
     import pandas as pd
     import numpy as np
-    ### http://c.biancheng.net/view/2716.html
-    ### https://blog.csdn.net/weixin_40683253/article/details/87641416
     df = pd.read_csv('./store_info.csv')
 
     gp = df.groupby(by='channel').count()[['idstore']].sort_values(by='idstore', ascending=False).iloc[:10]
@@ -290,5 +288,10 @@ def plt_05():
     plt.show()
 
 
+def plt_06():
+    pass
+
 if __name__ == '__main__':
+    ### http://c.biancheng.net/view/2716.html
+    ### https://blog.csdn.net/weixin_40683253/article/details/87641416
     pass
