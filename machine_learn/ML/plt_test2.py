@@ -25,10 +25,9 @@ def run():
     create_time = '2019-11-01T00:00:00'
     to_time = '2019-12-20T00:00:00'
     new_df = xx(create_time, to_time)
-    print(new_df.to_dict())
     df2 = new_df.groupby(by='channel').sum()[['Total_paid']]
     print(df2['Total_paid'].sum())
-
+    return df2
 ### df2.to_dict() -> data
 data = {'Total_paid': {u'11ST': 13706.997125380816,
   u'AkuLaku': 70200.372066261596,
