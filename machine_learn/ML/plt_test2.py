@@ -209,7 +209,7 @@ data = {'Total_paid': {0: 13706.997125380816,
   87: u'Shopee',
   88: u'ozon'}}
 import pandas as pd
-df = pd.DataFrame(data)
+df = pd.DataFrame(data).sort_values(by='Total_paid')
 _x = df['channel']
 _y = df['Total_paid'].astype(int)
 # print(df)
