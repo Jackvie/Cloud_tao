@@ -14,10 +14,10 @@ def write(q):
         try:
             file_path, content=q.get(timeout=20)
             print(file_path)
-            with open('./record_imgs/'+file_path, 'wb') as f:
+            with open('./'+file_path, 'wb') as f:
                 f.write(content)
 
-            with open('./record_imgs/./record.csv', 'a') as ff:
+            with open('./record.csv', 'a') as ff:
                 ### 记录文件名作为路径
                 ff.write('\n'+file_path)
         except:
