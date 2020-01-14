@@ -5,3 +5,6 @@ jieba
 ipython
 scipy
 Scikit-learn
+# https://www.iteye.com/blog/xiaolin0199-2022827
+# https://pypi.org/project/django-cas-ng/
+# django-cas-ng==3.5.10
