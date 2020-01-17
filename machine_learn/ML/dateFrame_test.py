@@ -1,3 +1,5 @@
+### https://blog.csdn.net/weixin_42224119/article/details/95753387
+### total_fr_month[(total_fr_month[“name”] == i) & (total_fr_month[“year”] == 2014)][“p_jcl”]
 def fn1():
     import pandas as pd
 
