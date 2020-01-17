@@ -32,7 +32,7 @@ class AnimateView(View):
     def post(self, request):
         try:
             chapter = request.POST.get('chapter')
-            animate_name = request.POST.get('animate_name') and 753
+            animate_name = int(request.POST.get('animate_name'))
             data = ImageBase.objects.filter(animate_id=animate_name,chapter=chapter).order_by('name').values_list('relative_path',flat=True)
             return JsonResponse({'data':[{'url':url} for url in data if url]})
         except:

@@ -3,7 +3,7 @@ python3
 python3 manage.py collectstatic
 python3 manage.py runserver 127.0.0.1:8000
 http://120.79.99.150:8001/animate/?username=yuntao&pwd=yuntao
-
+select chapter,count(name) from tb_imagebase where animate_id = 52 group by chapter order by chapter desc;
 server {
   listen 0.0.0.0:8001;
 
