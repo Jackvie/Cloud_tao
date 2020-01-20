@@ -8,6 +8,7 @@ class CateGory(models.Model):
     class Meta:
         db_table = 'tb_category'
 
+
 class Animate(models.Model):
 
     id = models.AutoField(primary_key=True)
@@ -18,6 +19,9 @@ class Animate(models.Model):
     ## self._meta.get_field('status').flatchoices 获取choices
     ## self.get_status_display() 获取字段映射的中文值
     status = models.SmallIntegerField(choices=((0, '未知'),(1,'完结'),(2,'连载'),(3,'下架')), default=0)
+    create_time = models.DateField(auto_now_add=True)
+    update_time = models.DateField(auto_now=True)
+    cover_photo = models.CharField(max_length=400, blank=True, null=True, help_text='封面图片')
 
     class Meta:
         db_table = 'tb_animate'

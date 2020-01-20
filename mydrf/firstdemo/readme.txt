@@ -14,3 +14,4 @@ server {
         alias /home/yuntao/static/;
   }
 }
+
