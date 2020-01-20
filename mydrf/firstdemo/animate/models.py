@@ -13,11 +13,17 @@ class Animate(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, null=False, unique=True, db_index=True)
     category = models.ForeignKey(CateGory, db_constraint=False, null=True,blank=True,on_delete=models.SET_NULL)
+    ## 状态手动设置为tinyInt 迁移时不再操作这个表
+    ## alter table tb_animate add status tinyint(3) not null default 0;
+    ## self._meta.get_field('status').flatchoices 获取choices
+    ## self.get_status_display() 获取字段映射的中文值
+    status = models.SmallIntegerField(choices=((0, '未知'),(1,'完结'),(2,'连载'),(3,'下架')), default=0)
 
     class Meta:
         db_table = 'tb_animate'
         verbose_name = '动画'
         verbose_name_plural = '动画'
+        managed = False
 
 class ImageBase(models.Model):
 
