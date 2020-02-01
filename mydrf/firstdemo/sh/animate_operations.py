@@ -11,11 +11,11 @@ if __name__ == "__main__":
 
 def main():
     action, name, pk, status = input('请输入操作(0:更新; 1:创建)'), input('请输入漫画名:'), input('请输入漫画ID:'), input('请输入漫画状态:')
-    if action == 0:
+    if action == '0':
         assert ImageBase.objects.filter(animate_id=pk).exists(), '漫画不存在, 请确认漫画图片表中是否有对应数据'
         animate = Animate.objects.filter(pk=id, name=name)
         animate.save()
-    elif action == 1:
+    elif action == '1':
         assert ImageBase.objects.filter(animate_id=pk).exists(), '漫画不存在, 请确认漫画图片表中是否有对应数据'
         assert not Animate.objects.filter(Q(name=name) | Q(id=pk)).exists(), 'ID或漫画名已存在'
         assert int(status) in choices_status
