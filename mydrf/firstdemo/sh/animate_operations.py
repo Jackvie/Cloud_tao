@@ -14,6 +14,8 @@ def main():
     if action == '0':
         assert ImageBase.objects.filter(animate_id=pk).exists(), '漫画不存在, 请确认漫画图片表中是否有对应数据'
         animate = Animate.objects.filter(id=pk, name=name)
+        assert animate.count() == 1, '更新失败'
+        animate = animate.first()
         animate.save()
     elif action == '1':
         assert ImageBase.objects.filter(animate_id=pk).exists(), '漫画不存在, 请确认漫画图片表中是否有对应数据'
