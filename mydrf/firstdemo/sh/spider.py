@@ -105,7 +105,7 @@ def main():
     try:
         # connections.close_all()
         ### 关闭数据库链接开始多任务下载
-        url = 'https://www.bidongmh.com/chapter/20591'
+        url = 'https://www.bidongmh.com/chapter/1458'
         mq = Queue(maxsize=200)
         p1 = Process(target=run_page, args=(url, mq))
         p2 = Process(target=download, args=(mq,))
