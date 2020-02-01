@@ -43,5 +43,6 @@ class ImageBase(models.Model):
         #index_together = ['chapter','name']
         # 这里索引手动创建 迁移时不再操作此表
         # alter table tb_imagebase add INDEX `chapter_name` (chapter,name(4));
+        # alter table tb_imagebase add UNIQUE KEY `tb_imagebase_animate_id_551bbabe` (`animate_id`,`chapter`,`name`(16))
 
 
