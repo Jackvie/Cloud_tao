@@ -33,9 +33,12 @@ def task(src, result):
             res = requests.get(src, verify=False, headers=headers, timeout=8).content
             break
         except (HTTPError,ConnectTimeout,ConnectionError,SSLError):
+            print('task---expect--error', src)
             time.sleep(5)
-        except:
-            return
+        except Exception as e:
+            print('task---unexpect--error', src, e)
+            time.sleep(5)
+            continue
     else:
         return
 
@@ -48,7 +51,6 @@ def task(src, result):
 def download(mq):
     ### 多任务下载
     try:
-        print('---------')
         import gevent
         from gevent import monkey, pool
         monkey.patch_all(thread=False)
@@ -57,27 +59,27 @@ def download(mq):
         pl = pool.Pool(40)
         try:
             while True:
-                src = mq.get(timeout=5)
+                src = mq.get(timeout=30)
                 print(src)
                 src_list.append(src)
         except:
-            pass
+            print('download------pause--count_of_url=',len(src_list))
         coroutine = [pl.spawn(task, src, result) for src in src_list]
         gevent.joinall(coroutine)
         print('download----------end')
         connections.close_all()
         ImageBase.objects.all()
         ImageBase.objects.bulk_create([ImageBase(**kwargs) for kwargs in result])
-    except:
-        import traceback
-        traceback.print_exc()
-        return
+        print('create-------------end')
+    except Exception as e:
+        print('download_error----->',e)
+    return
 
 def run_page(url, mq):
     ### 翻页获取每一章 轮循
     while True:
         try:
-            response = requests.get(url, headers=headers, timeout=10, verify=False).content
+            response = requests.get(url, headers=headers, timeout=5, verify=False).content
             soup = BeautifulSoup(response, 'xml')
             imgs = soup.find_all(name='img', attrs={'class':'comicimg'})
             for src in  [i.get('src') for i in imgs]:
@@ -88,13 +90,15 @@ def run_page(url, mq):
                 continue
             break
         except (HTTPError,ConnectTimeout,ConnectionError,SSLError):
+            print('runpage_expect_errors---->')
             time.sleep(5)
             continue
-        except:
-            import traceback
-            traceback.print_exc()
-            return
+        except Exception as e:
+            time.sleep(5)
+            print('runpage_others_unexpect_errors---->', e)
+            continue
     print('run_page----end')
+    return
 
 
 def main():
