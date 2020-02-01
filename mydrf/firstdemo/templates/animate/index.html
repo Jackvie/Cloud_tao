@@ -14,6 +14,12 @@
             text-align: center;
         }
         {#  elementToCenter  https://www.cnblogs.com/xinjie-just/p/5916001.html  #}
+        #btn_div {
+            z-index: 10;
+            position: fixed;
+            left: 5px;
+            top: 50%;
+        }
     </style>
     <script src="/static/js/jquery-2.2.3.min.js"></script>
     <script src="/static/js/animal.js"></script>
@@ -22,6 +28,9 @@
 <input type="text" placeholder="输入漫画名" id="animate_name">
 <input type="text" placeholder="输入章节" id="chapter">
 <input type="button" value="查阅" id="subscribe">
+<div id="btn_div">
+    <input type="button" value="上" id="pref"> &nbsp;&nbsp; <input type="button" value="下" id="'next">
+</div>
 <div id="mydiv">
 </div>
 <a href="#">回到顶部</a>
