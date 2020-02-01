@@ -19,7 +19,8 @@ $(function () {
                 $('#mydiv').empty();
                 data.forEach(function (value) {
                    console.log(value.url);
-                   $('<img width="360px" height="2100px" src="' + value.url  +'" /><br />').appendTo($('#mydiv'))
+                   // $('<img width="360px" height="2100px" src="' + value.url  +'" /><br />').appendTo($('#mydiv'))
+                   $('<img src="' + value.url  +'" /><br />').appendTo($('#mydiv'))
                 });
             },
             error: function (xhr, status, error) {
