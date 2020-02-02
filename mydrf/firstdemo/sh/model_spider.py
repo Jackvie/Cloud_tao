@@ -100,13 +100,13 @@ def ask_each_page_loop(url):
     return allImagesUrl
 
 
-def main():
+def main(id=None,name=None):
     try:
         if True:
             return
         # connections.close_all()
         ### 关闭数据库链接开始多任务下载
-        url = 'https://www.bidongmh.com/chapter/10097'
+        url = Animate.objects.get(id=id, name=name)
         allImagesUrl = ask_each_page_loop(url)
         assert allImagesUrl and isinstance(allImagesUrl, list), 'ask_each_page_loop----no data'
         download(allImagesUrl)
@@ -118,5 +118,6 @@ def main():
         print('--------------')
 
 if __name__ == '__main__':
-    # main()
+    from animate.models import Animate
+    # main(id=568,name='解禁')
     pass
