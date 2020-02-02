@@ -10,6 +10,7 @@ if __name__ == "__main__":
 
 # from requests.exceptions import HTTPError,ConnectTimeout,ConnectionError,SSLError
 import requests
+requests.packages.urllib3.disable_warnings()
 # from concurrent.futures import ThreadPoolExecutor
 # from concurrent.futures import ProcessPoolExecutor
 # from multiprocessing import Process,Queue
@@ -72,7 +73,9 @@ def ask_each_page_loop(url):
     ### 翻页获取每一章 轮循
     allImagesUrl = list()
     print('ask_each_page_loop----start')
+    pageNo = 1
     while True:
+        print('当前请求第{}页'.format(pageNo))
         try:
             response = requests.get(url, headers=headers, timeout=5, verify=False).content
             soup = BeautifulSoup(response, 'xml')
@@ -83,11 +86,12 @@ def ask_each_page_loop(url):
             time.sleep(1)
             if next and next[0].get('href'):
                 url = 'https://www.bidongmh.com' + next[0].get('href')
+                pageNo += 1
                 continue
             break
         except Exception as e:
             time.sleep(5)
-            print('ask_each_page_loop----error', e)
+            print('ask_each_page_loop----error----pageNo:{}'.format(pageNo), e)
             continue
     print('ask_each_page_loop----end', len(allImagesUrl))
     return allImagesUrl
@@ -97,14 +101,16 @@ def main():
     try:
         # connections.close_all()
         ### 关闭数据库链接开始多任务下载
-        url = 'https://www.bidongmh.com/chapter/21332'
+        url = 'https://www.bidongmh.com/chapter/6777'
         allImagesUrl = ask_each_page_loop(url)
         assert allImagesUrl and isinstance(allImagesUrl, list), 'ask_each_page_loop----no data'
         download(allImagesUrl)
 
     except:
+        print('==============')
         import traceback
         traceback.print_exc()
+        print('--------------')
 
 if __name__ == '__main__':
     # main()
