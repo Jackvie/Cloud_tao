@@ -1,22 +1,22 @@
-cloud_tao pass,.,.me  阿里云账户
-root pass,.,.0101me  服务器账户
-python  chuanzhi
-Jackvie pass,.,.0101me github账户
-mysql mysql  mysql账户
-Jackvie pass0101me 力扣账户
+阿里云账户
+`cloud_tao pass,.,.me`
+---
+github账户
+`Jackvie pass,.,.0101me`
+---
+力扣账户
+`Jackvie pass0101me`
+---
 
-整理限流笔记  整理Cloud tao库的笔记  整理django和flask log 笔记 
+PATH 添加环境变量 windows10
+```
+C:\Users\【花粥】\AppData\Local\Programs\Python\Python38
 
-log日志
-
-
-PATH 添加环境变量 C:\Users\【花粥】\AppData\Local\Programs\Python\Python38
-
-桌面路径 cd C:\Users\【花粥】\Desktop
+# 桌面路径 cd C:\Users\【花粥】\Desktop
 
 #! python
 
-现在下载的python都自带pip,pip在python目录下的Scripts目录下，添加到系统的path路径中就可以使用了。
+# 现在下载的python都自带pip,pip在python目录下的Scripts目录下，添加到系统的path路径中就可以使用了。
 C:\Users\【花粥】\AppData\Local\Programs\Python\Python38\Scripts
 
 gevent pandas pygame
@@ -29,30 +29,38 @@ https://blog.csdn.net/k_young1997/article/details/90314229
 安装c++ 14.0+ baiduwangpan software
 Microsoft Visual C++ Build Tools
 
-select *, @rb:=@rb+1 as rownumber from tb_imagebase as i, tb_animate as b, (select @rb:=0) as c where i.animate_id=b.id limit 10;
-
 git安装
 https://blog.csdn.net/ydf8525/article/details/52968373
 https://blog.csdn.net/lemon_cookie/article/details/79058151
 https://blog.csdn.net/feng991254/article/details/80506119
 
-telnet
-https://blog.csdn.net/kikajack/article/details/80529803
-
-alter table tb_imagebase add unique index `tb_imagebase_animate_id_551bbabe` (`animate_id`,`chapter`,`name`(16));
-
 磁盘路径切换 cd /d PATH
+```
+---
+mysql 行号
+```
+select *, @rb:=@rb+1 as rownumber from tb_imagebase as i, tb_animate as b, (select @rb:=0) as c where i.animate_id=b.id limit 10;
+```
+---
+
+telnet
+`https://blog.csdn.net/kikajack/article/details/80529803`
+
 
 测试环境使用方法：
+```
 ssh newssh@122.5.32.82 -p822
 251a%YBI;RW
 
 ssh yf@192.168.1.241      
 hRKtXs41Ea0VacE  yuntao jumpter
+```
 
 export 导出
+```
 外层 /home/oms_online/oms_online/对应docker中的/code/oms_online/
 外层 /tmp/ 目录可以实现文件连接
+```
 
 liuyabo 123
 代理: sudo ssh -i aaa.pem ec2-user@54.145.152.37
