@@ -1,0 +1,17 @@
+body {
+    background-color: #f4f4f4;
+}
+#mydiv {
+    background-color: black;
+    width: 100%;
+    border: 1px solid #f00;
+    text-align: center;
+}
+/* elementToCenter  https://www.cnblogs.com/xinjie-just/p/5916001.html  */
+
+#btn_div {
+    z-index: 10;
+    position: fixed;
+    left: 5px;
+    top: 50%;
+}
