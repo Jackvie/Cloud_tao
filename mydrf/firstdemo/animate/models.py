@@ -22,6 +22,8 @@ class Animate(models.Model):
     create_time = models.DateField(auto_now_add=True)
     update_time = models.DateField(auto_now=True)
     cover_photo = models.CharField(max_length=400, blank=True, null=True, help_text='封面图片')
+    ## alter table tb_animate add last_url varchar(400) default null comment '漫画截至更新那一章的URL信息'
+    last_url = models.CharField(max_length=400, blank=True, null=True, help_text='漫画截至更新那一章的URL信息')
 
     class Meta:
         db_table = 'tb_animate'
