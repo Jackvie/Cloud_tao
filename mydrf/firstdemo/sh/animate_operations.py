@@ -1,4 +1,7 @@
 #! /usr/bin/python3
+
+### 文件用来更新或创建广义的漫画
+
 import re,time,os
 import sys
 sys.path.insert(0, '/home/yuntao/firstdemo/')

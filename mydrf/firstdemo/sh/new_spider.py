@@ -1,4 +1,7 @@
 #! /usr/bin/python3
+
+### 文件用来爬取狭义的漫画信息  需要的是某一页漫画的URL信息
+
 import re,time,os
 import sys
 sys.path.insert(0, '/home/yuntao/firstdemo/')
@@ -99,9 +102,11 @@ def ask_each_page_loop(url):
 
 def main():
     try:
+        if True:
+            return
         # connections.close_all()
         ### 关闭数据库链接开始多任务下载
-        url = 'https://www.bidongmh.com/chapter/6777'
+        url = 'https://www.bidongmh.com/chapter/10097'
         allImagesUrl = ask_each_page_loop(url)
         assert allImagesUrl and isinstance(allImagesUrl, list), 'ask_each_page_loop----no data'
         download(allImagesUrl)
