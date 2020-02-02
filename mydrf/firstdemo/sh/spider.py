@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+
+### 文件已废弃
 import re,time,os
 import sys
 sys.path.insert(0, '/home/yuntao/firstdemo/')
@@ -116,5 +118,5 @@ def main():
         traceback.print_exc()
 
 if __name__ == '__main__':
-    # main()
+    ### 文件已废弃
     pass
