@@ -233,4 +233,5 @@ show warnings;
 show table status like 'one' \G;
 CACSADE 级联更新 
 ```
-
+- teamviewer远程链接
+`https://blog.csdn.net/tap880507/article/details/85601337`
