@@ -31,7 +31,7 @@ def task(src, result):
                 name = info.group(3)  # 图片名称
                 animate_id = info.group(1)  # 动漫ID
                 dir_path = '../animate/static/images/'+ animate_id +'/' + chapter  # 目录
-                relative_path = dir_path + '/'+name
+                relative_path = dir_path + '/'+name.replace('/','')
                 res = requests.get(src, verify=False, headers=headers, timeout=5).content
                 break
             except Exception as e:
@@ -90,8 +90,8 @@ def ask_each_page_loop(url):
                 continue
             break
         except Exception as e:
-            time.sleep(5)
             print('ask_each_page_loop----error----pageNo:{}'.format(pageNo), e)
+            time.sleep(5)
             continue
     print('ask_each_page_loop----end', len(allImagesUrl))
     return allImagesUrl
