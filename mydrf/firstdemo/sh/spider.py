@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-### 文件已废弃
+### todo 文件已废弃
 import re,time,os
 import sys
 sys.path.insert(0, '/home/yuntao/firstdemo/')

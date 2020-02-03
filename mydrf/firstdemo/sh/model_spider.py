@@ -127,5 +127,5 @@ def main(id=None,name=None):
 
 if __name__ == '__main__':
     from animate.models import Animate
-    main(id=304,name='老婆的闺密')
+    # main(id=537,name='冲突')
     pass

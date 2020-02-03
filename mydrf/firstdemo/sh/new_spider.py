@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 ### 文件用来爬取狭义的漫画信息  需要的是某一页漫画的URL信息
-
+### todo 文件已经废弃
 import re,time,os
 import sys
 sys.path.insert(0, '/home/yuntao/firstdemo/')
