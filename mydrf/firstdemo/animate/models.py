@@ -24,6 +24,8 @@ class Animate(models.Model):
     cover_photo = models.CharField(max_length=400, blank=True, null=True, help_text='封面图片')
     ## alter table tb_animate add last_url varchar(400) default null comment '漫画截至更新那一章的URL信息'
     last_url = models.CharField(max_length=400, blank=True, null=True, help_text='漫画截至更新那一章的URL信息')
+    ## alter table tb_animate add last_url_download tinyint(1) default 1 comment '是否下载当前last_url页';
+    last_url_download = models.BooleanField(default=True, help_text='是否下载当前last_url页')
 
     class Meta:
         db_table = 'tb_animate'

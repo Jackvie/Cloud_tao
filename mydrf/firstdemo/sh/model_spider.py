@@ -72,8 +72,10 @@ def download(allImagesUrl):
     print('create-------------end')
 
 
-def ask_each_page_loop(url):
+def ask_each_page_loop(animate):
     ### 翻页获取每一章 轮循
+    animate = animate  # type: Animate
+    url = animate.last_url
     allImagesUrl = list()
     print('ask_each_page_loop----start')
     pageNo = 1
@@ -82,9 +84,13 @@ def ask_each_page_loop(url):
         try:
             response = requests.get(url, headers=headers, timeout=5, verify=False).content
             soup = BeautifulSoup(response, 'xml')
-            imgs = soup.find_all(name='img', attrs={'class':'comicimg'})
-            for src in  [i.get('src') for i in imgs]:
-                allImagesUrl.append(src)
+            if pageNo == 1 and not animate.last_url_download:
+                # 如果不下载当期页的话走这里
+                pass
+            else:
+                imgs = soup.find_all(name='img', attrs={'class': 'comicimg'})
+                for src in [i.get('src') for i in imgs]:
+                    allImagesUrl.append(src)
             next = soup.find_all(name='a', attrs={'class': 'mh_nextbook mh_btn'}, text='下一章')
             time.sleep(1)
             if next and next[0].get('href'):
@@ -97,18 +103,20 @@ def ask_each_page_loop(url):
             time.sleep(5)
             continue
     print('ask_each_page_loop----end', len(allImagesUrl))
+    animate.last_url = url
+    animate.last_url_download = False
+    animate.save()
     return allImagesUrl
 
 
 def main(id=None,name=None):
     try:
-        if True:
-            return
-        # connections.close_all()
-        ### 关闭数据库链接开始多任务下载
-        url = Animate.objects.get(id=id, name=name)
-        allImagesUrl = ask_each_page_loop(url)
+        # 获取连载状态的
+        animate = Animate.objects.filter(id=id, name=name, status=2, last_url__isnull=False).exclude(last_url='').first()
+        assert animate, 'animate不存在'
+        allImagesUrl = ask_each_page_loop(animate)
         assert allImagesUrl and isinstance(allImagesUrl, list), 'ask_each_page_loop----no data'
+        connections.close_all()
         download(allImagesUrl)
 
     except:
@@ -119,5 +127,5 @@ def main(id=None,name=None):
 
 if __name__ == '__main__':
     from animate.models import Animate
-    # main(id=568,name='解禁')
+    main(id=304,name='老婆的闺密')
     pass
