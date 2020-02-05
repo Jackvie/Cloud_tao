@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth import login, logout, authenticate
-from .models import ImageBase
+from .models import ImageBase,Animate
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
@@ -23,7 +23,8 @@ class AnimateView(View):
             assert user, 'xxxxx'
             # logout(request)
             login(request, user=user)
-            return render(request, 'animate/index.html',{})
+            data = Animate.objects.filter(status__in=[1,2]).values('id','name')
+            return render(request, 'animate/index.html',{'data':data})
         except:
             import traceback
             traceback.print_exc()
@@ -38,4 +39,13 @@ class AnimateView(View):
         except:
             import traceback
             return HttpResponse('{}'.format(traceback.format_exc()), status=404)
+
+#@login_required
+def animateChapter(request):
+    print('---')
+    print(request.user)
+    print(request.GET,'---')
+    print(request.POST,'===')
+    print(request.body,';;;')
+    return HttpResponse('OK',status=403)
 

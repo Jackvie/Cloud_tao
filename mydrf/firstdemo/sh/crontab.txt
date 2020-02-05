@@ -1,0 +1,12 @@
+# * * * * * sh /home..... 
+# 分 时 天 月 年
+# */3 * * * * ..... 间隔3分钟执行一次
+# crontab -e
+# ubuntu is cron --- centos is crond
+# 启动
+# /etc/init.d/cron [status|start|stop|restart|.....]
+# service cron [start|.....]
+# 脚本使用绝对路径
+# ps -ef | grep cron
+
+*/* * * * * sh /home/yuntao/qqq.sh

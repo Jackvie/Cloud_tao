@@ -120,12 +120,12 @@ def main(id=None,name=None):
         download(allImagesUrl)
 
     except:
-        print('==============')
         import traceback
         traceback.print_exc()
-        print('--------------')
 
 if __name__ == '__main__':
     from animate.models import Animate
-    # main(id=537,name='冲突')
-    pass
+    import sys
+    params = sys.argv
+    print(params)
+    main(id=params[1],name=params[2])
