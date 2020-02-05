@@ -24,7 +24,7 @@ class AnimateView(View):
             # logout(request)
             login(request, user=user)
             data = Animate.objects.filter(status__in=[1,2]).values('id','name')
-            return render(request, 'animate/index.html',{'data':data})
+            return render(request, './index.html',{'data':data})
         except:
             import traceback
             traceback.print_exc()
@@ -40,12 +40,9 @@ class AnimateView(View):
             import traceback
             return HttpResponse('{}'.format(traceback.format_exc()), status=404)
 
-#@login_required
+@login_required
 def animateChapter(request):
-    print('---')
-    print(request.user)
-    print(request.GET,'---')
-    print(request.POST,'===')
-    print(request.body,';;;')
-    return HttpResponse('OK',status=403)
+    animate_id = request.GET.get('animate_id')
+    info = ImageBase.objects.filter(animate_id=animate_id).values('chapter').distinct().order_by('chapter')
+    return JsonResponse({'data':list(info)})
 

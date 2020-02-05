@@ -33,7 +33,7 @@ def task(src, result):
                 chapter = info.group(2)  # 章节
                 name = info.group(3)  # 图片名称
                 animate_id = info.group(1)  # 动漫ID
-                dir_path = '../animate/static/images/'+ animate_id +'/' + chapter  # 目录
+                dir_path = './animate/static/images/'+ animate_id +'/' + chapter  # 目录
                 relative_path = dir_path + '/'+name.replace('/','')
                 res = requests.get(src, verify=False, headers=headers, timeout=5).content
                 break
@@ -49,7 +49,7 @@ def task(src, result):
             os.makedirs(dir_path)
         with open(relative_path, 'wb') as f:
             f.write(res)
-        result.append({'relative_path':relative_path.replace('../animate',''), 'chapter':int(chapter), 'name':name, 'animate_id':int(animate_id)})
+        result.append({'relative_path':relative_path.replace('./animate',''), 'chapter':int(chapter), 'name':name, 'animate_id':int(animate_id)})
     except Exception as e:
         print('task----unexpectError', e, src)
 

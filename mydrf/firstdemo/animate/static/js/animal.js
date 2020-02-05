@@ -3,8 +3,8 @@ $(function () {
 
     $('#subscribe').click(function () {
         var data = {
-            animate_name:$('#animate_name').val(),
-            chapter:$('#chapter').val()
+            animate_name:$('#editable-select').find('option:selected').text().trim(),
+            chapter:$('#editable-select-chapter').find('option:selected').val().trim()
         };
         var url = '/animate/';
         $.ajax({
@@ -27,33 +27,18 @@ $(function () {
                 alert("操作失败：" + error);
             }
         });
-    })
-
-    // 下拉框漫画名
-    $('#editable-select').editableSelect({ 
-        bg_iframe: true,
-        case_sensitive: false, 
-        items_then_scroll: 10 ,
-        isFilter:false
-    }); 
-
-    // 下拉框漫画章节
-    $('#editable-select-chapter').editableSelect({ 
-        bg_iframe: true,
-        case_sensitive: false, 
-        items_then_scroll: 10 ,
-        isFilter:false
-    }); 
+    });
 
     // 点击事件
-    $('#editable-select-chapter_sele').click(function(){
+    $('#editable-select').change(function(){
         if($('#editable-select').val()){
+
             var url = '/animate/chapter/';
             $.ajax({
                 url: url,
                 type: "get",
                 dataType: 'json',
-                data:{animate_id: $('#editable-select').val().trim()},
+                data:{animate_id: $('#editable-select').find('option:selected').val().trim()},
                 async: false,
                 success: function (response) {
                     data = response.data;
@@ -66,8 +51,6 @@ $(function () {
                     alert("操作失败：" + error);
                 }
             });
-        }else{
-            return
-        }
+        }else{}
     });
-})
+});
