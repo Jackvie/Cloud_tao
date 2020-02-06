@@ -8,19 +8,20 @@ def fn(page=1):
     'data[Filter][status][0]': 'resolved',
     'data[Filter][status][1]': 'status_2',
     'data[Filter][status][2]': 'status_3',
-    'data[Filter][modified][begin]': '2019-12-01',
-    'data[Filter][modified][end]': '2019-12-31',
+    'data[Filter][modified][begin]': '2020-02-01',
+    'data[Filter][modified][end]': '2020-01-01',
     'qksearch': 'true',
-    'conf_id': '1150594052001010508',
+    #'conf_id': '1150594052001010508',
     'perpage': 20,
     'page': page,
     }
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
-        'Cookie': '69918265_50594052_/prong/stories/stories_list_remember_view=1150594052001010508; story_index_order1150594052001010508sort=created%7EDESC; 50594052_category_tree_for_view=10; current_user_nick=%E9%AD%8F%E4%BA%91%E6%B6%9B; current_user_id=69918265; is_filter_close=false; tui_filter_fields=%5B%22name%22%2C%22owner%22%2C%22status%22%2C%22modified%22%5D; locale=zh_cn; pgv_pvi=9364111360; __root_domain_v=.tapd.cn; _qddaz=QD.oh4gvq.qg2vnx.k2y0w6rq; t_u=de553fd231b7b98e063b439716e74b81e083487f18ec5b5da1d57a69ddfb610b9a78aa37dfb0960e0e89f81af04f4bb29d6fb0548703720f8727b2b07fafccc2151f580ac9477d2b%7C1; new_worktable=todo%7C%7C%7Cexpiration_date; iteration_view_type_cookie=card_view; tapdsession=e4295d7c1bc9c6a32073a885dd93f8515bf2f5acf6d184f2ecf5a7c9a100e481; _t_uid=69918265; _t_crop=53554184; tapd_div=101_2463; iteration_card_current_iteration_50594052=1150594052001000331; _wt=eyJ1aWQiOiI2OTkxODI2NSIsImNvbXBhbnlfaWQiOiI1MzU1NDE4NCIsImV4cCI6MTU3ODY0MjkwN30%3D.00dfb13f2ed5c9edf4d91ed38e9dac2c94437ee32268d0261b42c2bc8aa06444; dsc-token=McEWX3iqNc1erWPg',
+        'Cookie': '69918265_50594052_/prong/stories/stories_list_remember_view=1150594052001010508; 50594052_category_tree_for_view=10; is_filter_close=false; tui_filter_fields=%5B%22name%22%2C%22owner%22%2C%22status%22%2C%22modified%22%5D; story_index_order1150594052001010508sort=owner%7Edesc; selected_category_id=-1; current_user_nick=%E9%AD%8F%E4%BA%91%E6%B6%9B; current_user_id=69918265; bugtrace_reports_myview_50594052_filter_fields=%5B%22version_report%22%2C%22module%22%5D; locale=zh_cn; pgv_pvi=9364111360; __root_domain_v=.tapd.cn; _qddaz=QD.oh4gvq.qg2vnx.k2y0w6rq; new_worktable=todo%7C%7C%7Cexpiration_date; iteration_view_type_cookie=card_view; current_view_tab=list; editor_type=markdown; tapdsession=15807147120121356358a54500dcf6a8bf77228a9b28d9d91789971c26db5175dd69db16b1; t_u=de553fd231b7b98edd40e5a63e4d9d547829c7b21d460065f061878312c51a31f060925246ee316728eb60e0f695a12a578e7ad744453acf28039e74828144beef1510f356cfdb05%7C1; t_cloud_login=yuntao%40starmerx.com; _t_uid=69918265; _t_crop=53554184; tapd_div=101_2463; iteration_card_current_iteration_50594052=1150594052001000380; _wt=eyJ1aWQiOiI2OTkxODI2NSIsImNvbXBhbnlfaWQiOiI1MzU1NDE4NCIsImV4cCI6MTU4MDk1ODU2OH0%3D.bbe70a48ba4123b0868fa664ed1c9fba38c2056ca15c86292a26549fabb4374d; dsc-token=Ypu84hQt9rLCV5fA'
     }
-    response = requests.get(url, params=params, headers=headers)
+    #response = requests.get(url, params=params, headers=headers)
+    response = requests.get(url+'?data[Filter][owner]=%E9%AD%8F%E4%BA%91%E6%B6%9B%3B&data[Filter][status][]=resolved&data[Filter][status][]=status_2&data[Filter][status][]=status_3&data[Filter][modified][begin]=2020-01-01&data[Filter][modified][end]=2020-02-01&qksearch=true&qksearch=true', headers=headers)
 
     from bs4 import BeautifulSoup
     import re
