@@ -1,4 +1,7 @@
 # https://www.cnblogs.com/Detector/p/8709362.html
+# https://blog.csdn.net/brucewong0516/article/details/82707492
+# https://www.cnblogs.com/jiangzhaowei/p/5856604.html
+# https://www.cnblogs.com/hedeyong/p/7646125.html
 
 
 def main():
