@@ -46,3 +46,8 @@ def animateChapter(request):
     info = ImageBase.objects.filter(animate_id=animate_id).values('chapter').distinct().order_by('chapter')
     return JsonResponse({'data':list(info)})
 
+
+@login_required
+def getAllanimates(request):
+    data = list(Animate.objects.values('id','name', 'cover_photo'))
+    return render(request, './animate.html', {'datas': data})

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for data in datas %}
+<label for="data.id">{{ data.name }}</label>
+<img id="data.id" src="{{ data.cover_photo }}" alt="{{ data.name }}">
+<br />
+{% endfor %}
+
+</body>
+</html>
