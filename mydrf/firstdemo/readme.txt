@@ -15,3 +15,9 @@ server {
   }
 }
 
+
+pip3 show django
+cd /home/yuntao/.local/lib/python3.5/site-packages/django
+vi db/models/sql/compiler.py
+:?def as_sql
+INSERT INTO --> INSERT IGNORE INTO
