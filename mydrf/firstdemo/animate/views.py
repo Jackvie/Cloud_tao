@@ -62,3 +62,4 @@ def getAllanimates(request):
         middle and data.append(middle)
 
     return render(request, './animate.html', {'datas': data})
+
