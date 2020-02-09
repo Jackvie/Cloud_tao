@@ -36,8 +36,7 @@ class AnimateView(View):
             animate_name = request.POST.get('animate_name')
             data = ImageBase.objects.filter(animate__name=animate_name,chapter=chapter).order_by('name').values_list('relative_path',flat=True)
             #return JsonResponse({'data':[{'url':url} for url in data if url]})
-            # return HttpResponse(('<img src="{}" /><br />'*len(data)).format(*data))
-            return HttpResponse('xxx', status=400)
+            return HttpResponse(('<img src="{}" /><br />'*len(data)).format(*data))
         except:
             import traceback
             return HttpResponse('{}'.format(traceback.format_exc()), status=404)
