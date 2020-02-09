@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+      <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
+
 <body>
 
-{% for data in datas %}
-<label for="data.id">{{ data.name }}</label>
-<img id="data.id" src="{{ data.cover_photo }}" alt="{{ data.name }}">
-<br />
-{% endfor %}
+    <div class="container">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Photos</a></li>
+            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
+            <li class="breadcrumb-item"><a href="#">Italy</a></li>
+            <li class="breadcrumb-item active">Rome</li>
+        </ul>
+
+        {% for data in datas %}
+            <div class="row">
+                {% for each in data %}
+                    <div class="col-lg-3">
+{#                 <label for="data.id">{{ data.name }}</label>#}
+                        <img id="each.id" class="" width="100%" height="360px" src="{{ each.cover_photo }}" alt="{{ each.name }}">
+                <div class="card-footer">
+{#                    <h6 class="card-title">{{ each.name }}</h6>#}
+                    {{ each.name }}<a href="#" style="float: right" class="btn btn-sm btn-primary">GO</a>
+                </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+
+    </div>
 
 </body>
 </html>

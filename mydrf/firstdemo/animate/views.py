@@ -50,5 +50,15 @@ def animateChapter(request):
 
 @login_required
 def getAllanimates(request):
-    data = list(Animate.objects.values('id','name', 'cover_photo'))
+    info = list(Animate.objects.values('id','name', 'cover_photo'))
+    data = list()
+    middle = list()
+    for index,value in enumerate(info):
+        middle.append(value)
+        if len(middle) == 4:
+            data.append(middle)
+            middle = list()
+    else:
+        middle and data.append(middle)
+
     return render(request, './animate.html', {'datas': data})
