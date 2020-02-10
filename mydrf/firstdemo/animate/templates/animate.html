@@ -8,11 +8,101 @@
       <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
       <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    html {
+    position: relative;
+    min-height: 100%;
+    }
+    body {
+        margin-bottom: 60px;
+    }
+    .navbar-static-bottom {
+        position: absolute;
+        bottom: 0;  width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        background-color: #f8f9fa;
+	}
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
     <title>Title</title>
 </head>
 
 <body>
-
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Logo</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+            </li>
+      </ul>
+        <span class="navbar-text">
+        Welcome yuntaoWei
+      </span>
+      <form class="form-inline ml-auto" >
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-success" type="button">Search</button>
+      </form>
+    </nav>
+    <br>
+    <div class="container">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+  <!-- 指示符 -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <!-- 轮播图片 -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/304/thumb.jpg">
+      <div class="carousel-caption">
+        <h3>第一张图片描述标题</h3>
+        <p>描述文字!</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/599/thumb.jpg">
+      <div class="carousel-caption">
+        <h3>第二张图片描述标题</h3>
+        <p>描述文字!</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/641/thumb.jpg">
+      <div class="carousel-caption">
+        <h3>第三张图片描述标题</h3>
+        <p>描述文字!</p>
+      </div>
+    </div>
+  </div>
+  <!-- 左右切换按钮 -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+    </div>
     <div class="container">
         <ul class="breadcrumb justify-content-lg-start">
             <li class="breadcrumb-item"><a href="#">Photos</a></li>
@@ -20,6 +110,24 @@
             <li class="breadcrumb-item"><a href="#">Italy</a></li>
             <li class="breadcrumb-item active">Rome</li>
         </ul>
+     <ul class="nav nav-tabs nav-justified">
+{#     <ul class="nav nav-tabs">#}
+    <li class="nav-item">
+      <a class="nav-link active" href="#">人气</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">完结</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">已下架</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">连载中</a>
+    </li>
+         <li class="nav-item">
+      <a class="nav-link disabled" href="#">未知</a>
+    </li>
+  </ul>
 
         {% for data in datas %}
             <div class="row">
@@ -45,6 +153,50 @@
         </ul>
 
     </div>
+
+<footer class="navbar-static-bottom">
+
+<nav class="navbar navbar-expand-sm bg-light justify-content-lg-center">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">个人网站</a>
+</li>
+<li class="nav-item navbar-text" style="color: #e1e1e1">
+|
+</li>
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">联系人</a>
+</li>
+<li class="nav-item navbar-text" style="color: #e1e1e1">
+|
+</li>
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">电话号码</a>
+</li>
+<li class="nav-item navbar-text" style="color: #e1e1e1">
+|
+</li>
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">159****1922</a>
+</li>
+</ul>
+</nav>
+<nav class="navbar navbar-expand-sm bg-light justify-content-lg-center">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">个人测试娱乐</a>
+</li>
+<li class="nav-item navbar-text" style="color: #e1e1e1">
+|
+</li>
+<li class="nav-item">
+<a class="nav-link" href="javascript:;">不便请联系本人关闭网站</a>
+</li>
+
+</ul>
+</nav>
+
+</footer>
 
 </body>
 </html>
