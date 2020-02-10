@@ -2,6 +2,8 @@ from django.db import models
 
 
 class CateGory(models.Model):
+    ignore_conflicts = True
+
     id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=40, blank=True, null=True)
 
@@ -34,6 +36,7 @@ class Animate(models.Model):
         managed = False
 
 class ImageBase(models.Model):
+    ignore_conflicts = True
 
     id = models.AutoField(primary_key=True)
     relative_path = models.CharField(max_length=200, null=True, blank=True)
