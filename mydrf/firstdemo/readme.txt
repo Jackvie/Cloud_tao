@@ -37,3 +37,16 @@ vi db/models/sql/compiler.py
 # result = ['INSERT INTO %s' % qn(opts.db_table)]
 # modify by yuntaoWei 2020-02-10 resolve insert into or bulk create duplicate ignore by futeaure 'ignore_conflicts'
 result = ['INSERT %s INTO %s' % (('', 'IGNORE')[getattr(self.query.model or opts.concrete_model, 'ignore_conflicts', False)==True], qn(opts.db_table))]
+
+
+nav-static-bottom 页脚
+
+https://blog.csdn.net/css_aaa/article/details/82974924
+
+Bootstrap4 导航栏元素居右
+
+Bootstrap 4正解：
+
+.ml-auto元素居右
+
+.mr-auto元素居左
