@@ -106,9 +106,21 @@ https://www.mls-software.com/opensshd.html
 https://blog.csdn.net/k_young1997/article/details/90314229
 已下载软件包 只需配置环境变量 并生成密钥操作
 
-安装c++ 14.0+ baiduwangpan software
-Microsoft Visual C++ Build Tools
 
+安装Visual C++ 14.0 
+baiduwangpan software： Microsoft Visual C++ Build Tools
+---
+url----> https://blog.csdn.net/chy555chy/article/details/52129501
+
+set path=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+
+set lib=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\ucrt\x86
+
+set include=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt
+---
+cd Desktop\me_test\statcpp\
+cl helloworld.cpp
+---
 git安装
 https://blog.csdn.net/ydf8525/article/details/52968373
 https://blog.csdn.net/lemon_cookie/article/details/79058151
