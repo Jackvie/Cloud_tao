@@ -1,7 +1,13 @@
 - 七牛云帐号
 `15938721922@163.com pass,.,.me`
+- CSDN帐号
+```
+https://www.csdn.net/
+15938721922 pass,.,.0101me
+```
 - pycharm帐号
 ```
+http://www.100c1.com/portal/page/index/id/2.html
 pycharm YA20010421450001311 订单号
 402655264635149710 卡密
 http://bird.100c1.com/portal/page/index/id/1.html 提取卡密
