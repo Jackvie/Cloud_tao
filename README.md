@@ -22,3 +22,6 @@ http://www.celeryproject.org/
 
 ### redis
 `https://redis.io/`
+
+### aliyunLearn
+`http://a.aliyun.com/f1.j1xYK`
