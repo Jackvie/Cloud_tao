@@ -28,6 +28,10 @@
         width: 100%;
         height: 100%;
     }
+
+    div .carousel-inner img {
+        height: 520px;
+    }
 </style>
     <title>Title</title>
 </head>
@@ -73,7 +77,7 @@
   <!-- 轮播图片 -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/static/images/304/thumb.jpg">
+      <img src="/static/images/304/thumb.jpg" >
       <div class="carousel-caption">
         <h3>第一张图片描述标题</h3>
         <p>描述文字!</p>
@@ -142,12 +146,16 @@
             </div>
         {% endfor %}
 
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <ul id="paginator" class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="javascript:;">Previous</a></li>
+            {% for page_obj in paginators %}
+                {% if page_obj.active %}
+                    <li class="page-item active"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
+                {% endif %}
+            {% endfor %}
+            <li class="page-item"><a class="page-link" href="javascript:;">Next</a></li>
         </ul>
 
     </div>

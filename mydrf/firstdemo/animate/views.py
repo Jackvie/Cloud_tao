@@ -10,6 +10,8 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth import login, logout, authenticate
 from .models import ImageBase,Animate
+from django.core import paginator
+
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
@@ -50,10 +52,18 @@ def animateChapter(request):
 
 @login_required
 def getAllanimates(request):
-    from django.core import paginator
+    '''
+    active 当期页高亮
+    data 分页后当前页以4为长度拆分
+    get_page 要获取的第几页
+    paginators 分页的信息链接集
+    :return:
+    '''
+    get_page = int(request.GET.get('page', 1))
     info = Animate.objects.values('id','name', 'cover_photo')
     paginator_ = paginator.Paginator(info, 6)
-    result = paginator_.page(1) and list(paginator_.page(1))
+    result = paginator_.page(get_page) and list(paginator_.page(get_page))
     data = [result[i:i + 4] for i in range(0, len(result), 4)]
-    return render(request, './animate.html', {'datas': data})
+    paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d' % i} for i in range(1,paginator_.num_pages+1)]
+    return render(request, './animate.html', {'datas': data, 'paginators':paginators})
 
