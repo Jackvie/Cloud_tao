@@ -60,10 +60,17 @@ def getAllanimates(request):
     :return:
     '''
     get_page = int(request.GET.get('page', 1))
-    info = Animate.objects.values('id','name', 'cover_photo')
+    get_status = int(request.GET.get('status', 999))
+    info = Animate.objects.values('id', 'name', 'cover_photo') if get_status == 999 else Animate.objects.filter(status=get_status).values('id', 'name', 'cover_photo')
+
     paginator_ = paginator.Paginator(info, 6)
     result = paginator_.page(get_page) and list(paginator_.page(get_page))
     data = [result[i:i + 4] for i in range(0, len(result), 4)]
-    paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d' % i} for i in range(1,paginator_.num_pages+1)]
-    return render(request, './animate.html', {'datas': data, 'paginators':paginators})
+    flatchoices = Animate._meta.get_field('status').flatchoices
+    flatchoices.append((999, '全部'))
+    paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d&status=%d' % (i, get_status)} for i in range(1,paginator_.num_pages+1)]
+    status_data = [{'disabled': 'disabled' if i==get_status else '', 'active': 'active' if get_status==i else '', 'status':j,'href':'/animate/getAllanimates/?status=%d' % i} for i,j in flatchoices]
+    return render(request, './animate.html', {'datas': data, 'paginators':paginators, 'status_data':status_data})
+
+
 

@@ -114,24 +114,14 @@
             <li class="breadcrumb-item"><a href="#">Italy</a></li>
             <li class="breadcrumb-item active">Rome</li>
         </ul>
-     <ul class="nav nav-tabs nav-justified">
+        <ul class="nav nav-tabs nav-justified">
 {#     <ul class="nav nav-tabs">#}
-    <li class="nav-item">
-      <a class="nav-link active" href="#">人气</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">完结</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">已下架</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">连载中</a>
-    </li>
-         <li class="nav-item">
-      <a class="nav-link disabled" href="#">未知</a>
-    </li>
-  </ul>
+            {% for data in status_data %}
+                <li class="nav-item">
+                    <a class="nav-link {{ data.active }}  {{ data.disabled }}" href="{{ data.href }}">{{ data.status }}</a>
+                </li>
+            {% endfor %}
+        </ul>
 
         {% for data in datas %}
             <div class="row">
