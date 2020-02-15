@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import login, logout, authenticate
 from .models import ImageBase,Animate
 from django.core import paginator
+import itertools
 
 
 # Create your views here.
@@ -25,8 +26,19 @@ class AnimateView(View):
             assert user, 'xxxxx'
             # logout(request)
             login(request, user=user)
-            data = Animate.objects.filter(status__in=[1,2]).values('id','name')
-            return render(request, './index.html',{'data':data})
+            data = list(Animate.objects.filter(status__in=[1,2]).values('id','name'))
+            animate_id = request.GET.get('animate_id')
+            init_data = None
+
+            if animate_id:
+                init = ImageBase.objects.filter(animate_id=animate_id,chapter=int(ImageBase.objects.filter(animate_id=animate_id).order_by('chapter').first().chapter)).order_by('name').values_list('relative_path',flat=True)
+                init_data = ('<img src="{}" /><br />'*len(init)).format(*init)
+                for index, i in enumerate(data):
+                    if str(i['id']) == str(animate_id):
+                        data.insert(0, data.pop(index))
+                        break
+
+            return render(request, './index.html',{'data':data, 'init_data':init_data})
         except:
             import traceback
             traceback.print_exc()
@@ -70,6 +82,12 @@ def getAllanimates(request):
     pre_next = {'next_page': page.has_next() and '/animate/getAllanimates/?page=%d&status=%d' % (page.next_page_number(), get_status), 'previous_page':page.has_previous() and '/animate/getAllanimates/?page=%d&status=%d' % (page.previous_page_number(), get_status)}
 
     data = [result[i:i + 4] for i in range(0, len(result), 4)]
+    for i in data:
+        for j in i:
+            j.update({'goto':'/animate/?username=yuntao&pwd=yuntao&animate_id=%s' % j['id']})
+
+
+
     flatchoices = Animate._meta.get_field('status').flatchoices
     flatchoices.append((999, '全部'))
     paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d&status=%d' % (i, get_status)} for i in range(1,paginator_.num_pages+1)]
