@@ -50,16 +50,10 @@ def animateChapter(request):
 
 @login_required
 def getAllanimates(request):
-    info = list(Animate.objects.values('id','name', 'cover_photo'))
-    data = list()
-    middle = list()
-    for index,value in enumerate(info):
-        middle.append(value)
-        if len(middle) == 4:
-            data.append(middle)
-            middle = list()
-    else:
-        middle and data.append(middle)
-
+    from django.core import paginator
+    info = Animate.objects.values('id','name', 'cover_photo')
+    paginator_ = paginator.Paginator(info, 6)
+    result = paginator_.page(1) and list(paginator_.page(1))
+    data = [result[i:i + 4] for i in range(0, len(result), 4)]
     return render(request, './animate.html', {'datas': data})
 
