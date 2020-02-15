@@ -25,3 +25,9 @@ http://www.celeryproject.org/
 
 ### aliyunLearn
 `http://a.aliyun.com/f1.j1xYK`
+
+### sublim插件 pythonIDE 
+```
+https://blog.csdn.net/wxl1555/article/details/69941451/
+https://www.runoob.com/python/python-ide.html
+```
