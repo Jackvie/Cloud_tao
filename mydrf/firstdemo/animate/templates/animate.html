@@ -137,7 +137,9 @@
         {% endfor %}
 
         <ul id="paginator" class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="javascript:;">Previous</a></li>
+            {% if pre_next.previous_page %}
+                <li class="page-item"><a class="page-link" href="{{ pre_next.previous_page }}">Previous</a></li>
+            {% endif %}
             {% for page_obj in paginators %}
                 {% if page_obj.active %}
                     <li class="page-item active"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
@@ -145,7 +147,9 @@
                     <li class="page-item"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
                 {% endif %}
             {% endfor %}
-            <li class="page-item"><a class="page-link" href="javascript:;">Next</a></li>
+            {% if pre_next.next_page %}
+                <li class="page-item"><a class="page-link" href="{{ pre_next.next_page }}">Next</a></li>
+            {% endif %}
         </ul>
 
     </div>

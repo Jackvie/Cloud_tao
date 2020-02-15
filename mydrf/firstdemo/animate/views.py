@@ -57,6 +57,7 @@ def getAllanimates(request):
     data 分页后当前页以4为长度拆分
     get_page 要获取的第几页
     paginators 分页的信息链接集
+    999 默认代表查询全部漫画
     :return:
     '''
     get_page = int(request.GET.get('page', 1))
@@ -64,13 +65,17 @@ def getAllanimates(request):
     info = Animate.objects.values('id', 'name', 'cover_photo') if get_status == 999 else Animate.objects.filter(status=get_status).values('id', 'name', 'cover_photo')
 
     paginator_ = paginator.Paginator(info, 6)
-    result = paginator_.page(get_page) and list(paginator_.page(get_page))
+    page = paginator_.page(get_page)
+    result = page and list(page)
+    pre_next = {'next_page': page.has_next() and '/animate/getAllanimates/?page=%d&status=%d' % (page.next_page_number(), get_status), 'previous_page':page.has_previous() and '/animate/getAllanimates/?page=%d&status=%d' % (page.previous_page_number(), get_status)}
+
     data = [result[i:i + 4] for i in range(0, len(result), 4)]
     flatchoices = Animate._meta.get_field('status').flatchoices
     flatchoices.append((999, '全部'))
     paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d&status=%d' % (i, get_status)} for i in range(1,paginator_.num_pages+1)]
     status_data = [{'disabled': 'disabled' if i==get_status else '', 'active': 'active' if get_status==i else '', 'status':j,'href':'/animate/getAllanimates/?status=%d' % i} for i,j in flatchoices]
-    return render(request, './animate.html', {'datas': data, 'paginators':paginators, 'status_data':status_data})
+    return render(request, './animate.html', {'datas': data, 'paginators':paginators, 'status_data':status_data, 'pre_next':pre_next})
+
 
 
 
