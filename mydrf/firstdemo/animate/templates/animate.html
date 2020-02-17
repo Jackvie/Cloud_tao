@@ -1,91 +1,26 @@
 {% extends './base.html' %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css" />
+    <script src="/static/js/animal.js"></script>
+{% endblock %}
+
 {% block content %}
-    <div class="container">
-    <div id="demo" class="carousel slide" data-ride="carousel">
-  <!-- 指示符 -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  <!-- 轮播图片 -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/static/images/304/thumb.jpg" >
-      <div class="carousel-caption">
-        <h3>第一张图片描述标题</h3>
-        <p>描述文字!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/images/599/thumb.jpg">
-      <div class="carousel-caption">
-        <h3>第二张图片描述标题</h3>
-        <p>描述文字!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/images/641/thumb.jpg">
-      <div class="carousel-caption">
-        <h3>第三张图片描述标题</h3>
-        <p>描述文字!</p>
-      </div>
-    </div>
-  </div>
-  <!-- 左右切换按钮 -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-    </div>
-    <div class="container">
-        <ul class="breadcrumb justify-content-lg-start">
-            <li class="breadcrumb-item"><a href="#">Photos</a></li>
-            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
-            <li class="breadcrumb-item"><a href="#">Italy</a></li>
-            <li class="breadcrumb-item active">Rome</li>
-        </ul>
-        <ul class="nav nav-tabs nav-justified">
-{#     <ul class="nav nav-tabs">#}
-            {% for data in status_data %}
-                <li class="nav-item">
-                    <a class="nav-link {{ data.active }}  {{ data.disabled }}" href="{{ data.href }}">{{ data.status }}</a>
-                </li>
+    <div class="pageChildCenter">
+        <select id="editable-select" name="animate_name">
+            <option value="" disabled>选择漫画</option>
+            {% for each in data %}
+                <option value="{{ each.id }}">{{ each.name }}</option>
             {% endfor %}
-        </ul>
-
-        {% for data in datas %}
-            <div class="row">
-                {% for each in data %}
-                    <div class="col-lg-3">
-                        <img id="{{ each.id }}" class="" width="100%" height="360px" src="{{ each.cover_photo }}" alt="{{ each.name }}">
-                <div class="card-footer">
-                    {{ each.name }}<a href="{{ each.goto }}" style="float: right" class="btn btn-sm btn-primary">GO</a>
-                </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-
-        <ul id="paginator" class="pagination justify-content-center">
-            {% if pre_next.previous_page %}
-                <li class="page-item"><a class="page-link" href="{{ pre_next.previous_page }}">Previous</a></li>
-            {% endif %}
-            {% for page_obj in paginators %}
-                {% if page_obj.active %}
-                    <li class="page-item active"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link" href="{{ page_obj.href }}">{{ page_obj.page }}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if pre_next.next_page %}
-                <li class="page-item"><a class="page-link" href="{{ pre_next.next_page }}">Next</a></li>
-            {% endif %}
-        </ul>
-
+        </select>
+        <select id="editable-select-chapter" name="chapter">
+        </select>
+        <input type="button" value="查阅" id="subscribe">
     </div>
 
+    <div id="btn_div">
+        <input type="button" value="上" id="pref"> &nbsp;&nbsp; <input type="button" value="下" id="'next">
+    </div>
+    <div id="mydiv" class="img-fluid">
+        {{ init_data|safe }}
+    </div>
 {% endblock %}

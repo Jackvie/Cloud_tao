@@ -38,7 +38,7 @@ class AnimateView(View):
                         data.insert(0, data.pop(index))
                         break
 
-            return render(request, './index.html',{'data':data, 'init_data':init_data})
+            return render(request, './animate.html',{'data':data, 'init_data':init_data})
         except:
             import traceback
             traceback.print_exc()
@@ -92,7 +92,7 @@ def getAllanimates(request):
     flatchoices.append((999, '全部'))
     paginators = [{'active':i==get_page, 'page':i, 'href':'/animate/getAllanimates/?page=%d&status=%d' % (i, get_status)} for i in range(1,paginator_.num_pages+1)]
     status_data = [{'disabled': 'disabled' if i==get_status else '', 'active': 'active' if get_status==i else '', 'status':j,'href':'/animate/getAllanimates/?status=%d' % i} for i,j in flatchoices]
-    return render(request, './animate.html', {'datas': data, 'paginators':paginators, 'status_data':status_data, 'pre_next':pre_next})
+    return render(request, './index.html', {'datas': data, 'paginators':paginators, 'status_data':status_data, 'pre_next':pre_next})
 
 
 
