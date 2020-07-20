@@ -24,7 +24,6 @@ http://bird.100c1.com/portal/page/index/id/1.html 提取卡密
 - elm账户
 ```
 魏云涛 yuntao088
-刘亚波 123456
 ```
 - 代理账户
 `172.18.50.188  1080 https profiex`
@@ -56,6 +55,21 @@ http://47.107.51.119:15672	guest 1qazXSW@
 Jackvian Jackvian123456 
 https://app.swag.live/
 https://www.pornhub.com/view_video.php
+```
+- 91porn
+```
+15938721922
+pass,.,.0101me
+```
+- yuquan windows
+```
+asd123
+```
+- rabbitmq
+```
+mq.starmerx.com
+guest
+1qazXSW@3edc
 ```
 - 钉钉
 `https://im.dingtalk.com/`
