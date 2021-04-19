@@ -1,3 +1,5 @@
+// javac Hello.java
+// java Hello
 class World {
 	int age = 1;
 	String name = "xiao";
